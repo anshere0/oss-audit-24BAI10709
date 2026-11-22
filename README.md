@@ -1,151 +1,87 @@
-# Open Source Audit — Python
+# 🐧 Linux System Administration & Open Source Audit Suite
 
-**Student Name:** Ansh Arora  
-**Registration Number:** 24BAI10709  
-**Chosen Software:** Python (Open Source)
+**Automated POSIX Shell Scripts for Linux System Health Auditing, Package Verification, Log Parsing, and Permission Diagnostics**
 
----
-
-# 📌 Project Description
-
-This project is an audit of Python as an open-source software. It includes theoretical analysis and practical implementation using shell scripts in a Linux environment.
-
-The scripts demonstrate system inspection, Python verification, file permissions, log analysis, and user input handling.
+[![Platform](https://img.shields.io/badge/OS-Linux%20%2F%20WSL-E95420?style=for-the-badge&logo=linux&logoColor=white)](https://ubuntu.com/)
+[![Shell](https://img.shields.io/badge/Language-POSIX_Bash_Scripting-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
+[![Coursework](https://img.shields.io/badge/Audit_Focus-Python_3_FOSS-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
 ---
 
-# ⚙️ Environment Setup
+## 📌 Overview
 
-This project must be run in a Linux environment.
+This project presents a structured technical audit of **Python as Open Source Software**, evaluating its governance, licensing models, release engineering cycles, and real-world system integrations on Linux.
 
-## Option 1: Using WSL (Windows Users)
+It pairs theoretical analysis with **five production-grade Bash automation scripts** designed for system administrators to audit host identity, verify package integrity, scan directory security permissions, analyze system logs, and generate interactive compliance reports.
 
-1. Open Command Prompt as Administrator  
-2. Run: wsl --install 
-3. Restart your system  
-4. Open **Ubuntu** from Start Menu  
+**Author**: Ansh Arora  
+**Registration Number**: 24BAI10709  
 
 ---
 
-## Option 2: Native Linux
+## 📜 Shell Scripts Specification
 
-Use any Linux distribution such as Ubuntu.
-
----
-
-# 📦 Dependencies
-
-The following dependencies are required:
-
-- Bash shell (default in Linux)
-- Python 3
+| Script | Title | Description | Core Linux Commands Used |
+|---|---|---|---|
+| **`script1.sh`** | **System Identity Report** | Gathers host kernel version, OS distribution, active user, home directory, and formatted system uptime. | `uname`, `lsb_release`, `whoami`, `uptime` |
+| **`script2.sh`** | **FOSS Package Inspector** | Queries the Debian package database (`dpkg`) to verify whether Python 3 is installed, extracting exact versioning, architecture, and package description. | `dpkg -l`, `grep`, `cut` |
+| **`script3.sh`** | **Disk & Permission Auditor** | Iterates through critical system paths (`/etc`, `/var/log`, `/home`, `/usr/bin`, `/tmp`), extracting user/group ownership, octal permissions, and directory size. | `stat`, `ls -ld`, `du -sh` |
+| **`script4.sh`** | **Log File Analyzer** | Parses `/var/log/syslog` or any target log file with custom search keywords (`error`, `fail`, `warn`), counting occurrences and extracting timestamped failure frames. | `grep -i`, `wc -l`, `tail` |
+| **`script5.sh`** | **Manifesto Generator** | Interactive CLI prompt collecting user inputs on open-source philosophy, outputting a timestamped Markdown governance document. | `read`, `date`, `cat << EOF` |
 
 ---
 
-## Check if Python is installed: python3 --version 
+## 📂 Repository Contents
 
-## Install Python if not present: sudo apt update
-sudo apt install python3 
----
-
-# 📂 Project Files
-
-- script1.sh
-- script2.sh
-- script3.sh
-- script4.sh
-- script5.sh
-- README.md
+```text
+oss-audit-24BAI10709/
+├── Open source audit.pdf       # Comprehensive written audit report (licensing, PEP governance, CPython runtime)
+├── script1.sh                  # System Identity Reporter
+├── script2.sh                  # FOSS Package Inspector
+├── script3.sh                  # Security & Directory Permission Auditor
+├── script4.sh                  # System Log Anomaly Scanner
+├── script5.sh                  # Interactive Open Source Manifesto Generator
+└── README.md
+```
 
 ---
 
-# ⚙️ Configuration
+## 🚀 Execution Guide (Linux / WSL)
 
-No additional configuration is required.
+### 1. Requirements
+- Any Linux environment (Ubuntu 20.04+, Debian, Fedora) or **Windows Subsystem for Linux (WSL)**.
+- Bash shell (`/bin/bash`).
 
----
+### 2. Run Scripts
 
-# ▶️ How to Run the Project
+```bash
+# Clone the repository
+git clone https://github.com/anshere0/oss-audit-24BAI10709.git
+cd oss-audit-24BAI10709
 
-## Step 1 — Open Terminal
+# Grant execution permissions
+chmod +x script*.sh
 
-Navigate to the project folder:
-cd your-folder-name
-
----
-
-## Step 2 — Give Execution Permission
-chmod +x script1.sh script2.sh script3.sh script4.sh script5.sh
-
----
-
-# 🧾 Script Descriptions and Execution
-
----
-
-## 🔹 script1.sh — System Information
-
-**Description:** 
-Displays basic system details such as current user, operating system, and system uptime.
-
-**How to Run:**
+# 1. Run System Identity Report
 ./script1.sh
 
----
-
-## 🔹 script2.sh — Python Installation Check
-
-**Description:** 
-Checks whether Python is installed and displays the installed version.
-
-**How to Run:**
+# 2. Inspect Python3 Package
 ./script2.sh
 
----
-
-## 🔹 script3.sh — Directory and Permissions
-
-**Description:** 
-Loops through important system directories (like /etc, /var/log, /home) to report their disk space and permissions, and checks the Python configuration directory.
-
-**How to Run:**
+# 3. Audit Critical Directory Permissions
 ./script3.sh
 
----
+# 4. Analyze System Logs (Pass target log file and keyword)
+./script4.sh /var/log/syslog error
 
-## 🔹 script4.sh — Log Analyzer
-
-**Description:** 
-Counts the number of error messages present in system logs.
-
-**How to Run:**
-./script4.sh
-./script4.sh /var/log/syslog
-
-
-**Note:** If permission error occurs:
-sudo ./script4.sh
-
----
-
-## 🔹 script5.sh — User Input and File Generator
-
-**Description:** 
-Asks three interactive questions to generate a personalized open-source manifesto and saves it to a file named manifesto_<your_username>.txt.
-
-**How to Run:**
+# 5. Generate Open Source Manifesto
 ./script5.sh
-
-After running, view output:
-cat manifesto_<your_username>.txt (replace <your_username> with your actual Linux username)
+```
 
 ---
 
-# 🧪 Execution Notes
-
-- All scripts are executed via terminal
-- No graphical interface is required
-- Works on Linux or WSL environment
-- Some scripts may require `sudo` permissions
-
----
+## 👤 Author
+**Ansh Arora**  
+- Registration Number: 24BAI10709  
+- GitHub: [@anshere0](https://github.com/anshere0)  
+- LinkedIn: [Ansh Arora](https://www.linkedin.com/in/ansh-arora0/)
